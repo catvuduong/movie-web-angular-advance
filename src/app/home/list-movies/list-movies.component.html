@@ -1,0 +1,8 @@
+<div class="container">
+    <h3 class="text-center my-2">Danh Sách Phim</h3>
+    <div class="row">
+        <div class="col-3" *ngFor="let item of listMovies">
+            <app-movie [movie]="item"></app-movie>
+        </div>
+    </div>
+</div>

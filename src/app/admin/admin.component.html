@@ -1,0 +1,30 @@
+<div class="container">
+    <h3>Đăng Nhập</h3>
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
+        <div class="form-group">
+            <span>Tài khoản</span>
+            <input class="form-control" name="username" #username="ngModel" ngModel required />
+            <ng-container *ngIf="username.errors && (username.dirty || username.touched)">
+                <div *ngIf="username.errors?.['required']" class="alert alert-danger">Tài khoản không được để trống
+                </div>
+            </ng-container>
+        </div>
+        <div class="form-group">
+            <span>Mật khẩu</span>
+            <input type="password" class="form-control" name="password" #password="ngModel" ngModel required
+                minlength="6" maxlength="12" />
+            <ng-container *ngIf="password.errors && (password.dirty || password.touched)">
+                <div *ngIf="password.errors?.['required']" class="alert alert-danger">Mật khẫu không được đẽ trống
+                </div>
+                <div *ngIf="password.errors?.['minlength'] || password.errors?.['maxlength']"
+                    class="alert alert-danger">Mật
+                    khẩu
+                    phải từ 6 đến 12 ký tự
+                </div>
+            </ng-container>
+        </div>
+        <button type="submit" class="btn btn-success" [disabled]="!loginForm.valid">
+            Đăng Nhập
+        </button>
+    </form>
+</div>

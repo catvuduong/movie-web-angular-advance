@@ -1,0 +1,2 @@
+<button class="btn seat" [ngClass]="{'seated':seat.status, seating:statusOfSeat}" [disabled]="seat.status"
+    (click)="pickSeat()">{{seat.number}}</button>

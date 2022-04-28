@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <h3>Sơ Đồ Ghế</h3>
+            <ng-container *ngFor="let item of seatArr; let i=index">
+                <app-seat [seat]="item" (eventSeat)="pickSeat($event)"></app-seat>
+                <br *ngIf="(i+1)%4===0">
+            </ng-container>
+        </div>
+        <div class="col-sm-6">
+            <h3>Ghế Đang Được Chọn</h3>
+            <div *ngFor="let item of seatingList; let i=index">
+                Số Ghế: {{item.number}} -- Giá: {{item.price}}
+                <span (click)="cancleSeat(i, item.number)" style="color: red; cursor: pointer;">[Hủy]</span>
+            </div>
+        </div>
+    </div>
+</div>

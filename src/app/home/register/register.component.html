@@ -1,0 +1,40 @@
+<div class="container">
+    <h3>Đăng ký tài khoản</h3>
+    <form #registerForm="ngForm" (ngSubmit)="register(registerForm.value)">
+        <div class="form-group">
+            <span>Tài khoản</span>
+            <input class="form-control" name="username" #username="ngModel" ngModel required />
+            <ng-container *ngIf="username.errors && (username.dirty || username.touched)">
+                <div *ngIf="username.errors?.['required']" class="alert alert-danger">Tài khoản không được để trống
+                </div>
+            </ng-container>
+        </div>
+        <div class="form-group">
+            <span>Mật khẩu</span>
+            <input type="password" class="form-control" name="password" #password="ngModel" ngModel required
+                minlength="6" maxlength="12" />
+            <ng-container *ngIf="password.errors && (password.dirty || password.touched)">
+                <div *ngIf="password.errors?.['required']" class="alert alert-danger">Mật khẫu không được để trống
+                </div>
+                <div *ngIf="password.errors?.['minlength'] || password.errors?.['maxlength']"
+                    class="alert alert-danger">
+                    Mật
+                    khẩu
+                    phải từ 6 đến 12 ký tự
+                </div>
+            </ng-container>
+        </div>
+        <div class="form-group">
+            <span>Email</span>
+            <input class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" name="email" name="email"
+                #email="ngModel" ngModel required />
+            <ng-container *ngIf="email.errors && (email.dirty || email.touched)">
+                <div *ngIf="email.errors?.['required']" class="alert alert-danger">Email không được để rổng</div>
+                <div *ngIf="email.errors?.['pattern']" class="alert alert-danger">Email không đúng định dạng</div>
+            </ng-container>
+        </div>
+        <button type="submit" class="btn btn-success" [disabled]="!registerForm.valid">
+            Đăng ký
+        </button>
+    </form>
+</div>
